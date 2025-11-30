@@ -26,7 +26,6 @@ exec --no-startup-id dex --autostart --environment i3
 # Smart Borders - turn on active smart borders
 hide_edge_borders both
 
-
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -52,15 +51,23 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+slash kill
+bindsym $mod+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+e exec --no-startup-id dmenu_run
+# bindsym $mod+e exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+
+# use Rofi for opening programs and for selecting windows.
+#
+# opening programs using rofi - Win+d
+bindsym $mod+d exec rofi -show run -display-run "run " -lines 5 -eh 1 -show-icons -opacity 60 -bw 4 -fg "#cccccc" -color-enabled -separator-style solid -sidebar-mode -font "System San Francisco Display Thin 8"
+
+# selecting windows using rofi - Win+w
+bindsym $mod+w exec rofi -show window -display-run "window " -eh 1 -opacity 60 -bw 4 -fg "#cccccc" -color-enabled -separator-style solid -sidebar-mode -font "System San Francisco Display Thin 8"
 
 # change focus
 bindsym $mod+h focus left
@@ -87,10 +94,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+d split h
+bindsym $mod+-p split h
 
 # split in vertical orientation
-bindsym $mod+k split v
+bindsym $mod+y split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+u fullscreen toggle
