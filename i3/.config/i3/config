@@ -94,18 +94,19 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+-p split h
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+y split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+u fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+o layout stacking
 bindsym $mod+comma layout tabbed
 bindsym $mod+period layout toggle split
+bindsym $mod+r layout default
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -121,16 +122,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1: Evolution"
+set $ws2 "2: Firefox"
+set $ws3 "3: Terminal"
+set $ws4 "4: Emacs"
+set $ws5 "5: Thunar"
+set $ws6 "6: RetroTerminal"
+set $ws7 "7: Ristretto"
+set $ws8 "8: Gimp"
+set $ws9 "9: Python"
+set $ws10 "10: Spotify"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -190,8 +191,20 @@ mode "resize" {
 
 bindsym $mod+p mode "resize"
 
+# set the variable hex codes for the named colours.
+set $bg-color	       #4f545f
+set $inact-bg-color    #2f343f
+set $text-color	       #f3f4f5
+set $inact-text-color  #676e7d
+set $urgent-bg-color   #e53935
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        # status_command i3status
+	status_command i3blocks
+	colors {
+	background	$bg-color
+	separator	#757575
+	}
 }
