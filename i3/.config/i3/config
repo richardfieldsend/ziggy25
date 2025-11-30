@@ -226,7 +226,17 @@ for_window [class="Library"] floating enable
 
 # Applications to run at login
 #
-# Load a random wallpaper from the daytime folder
+# Load a random wallpaper from the daytime folder - cron job does the rest.
 exec --no-startup-id i3-msg 'exec feh --randomize --bg-fill /home/rjf/Pictures/Wallpapers/*'
-
+# Load Dvorak keyboard layout with swapped Ctrl/Caps lock keys.
 exec --no-startup-id i3-msg 'exec setxkbmap -layout gb -variant dvorakukp -option "ctrl:swapcaps"'
+# Start Dropbox - no icon on taskbar cos of changes by Dropbox
+exec --no-startup-id i3-msg 'exec dropbox start'
+# Start the redshift app
+exec --no-startup-id i3-msg 'exec redshift'
+# XScreensaver Start
+exec --no-startup-id i3-msg 'exec xscreensaver'
+# Activate the task list.
+exec --no-startup-id i3-msg 'exec task list'
+# Activate the Compton compositor so transparency will work.
+exec --no-startup-id i3-msg 'exec compton -f -b'
