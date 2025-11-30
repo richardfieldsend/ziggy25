@@ -208,3 +208,25 @@ bar {
 	separator	#757575
 	}
 }
+
+
+# Applications Setup.
+#
+# Applications to start in a non-tiled manner. These are the programs
+# that use small windows and which you want to have floating, such as
+# Gimp and XPad.
+for_window [class="xpad"] floating enable
+for_window [class="Search and Select List of Values - Firefox Nightly"] floating enable
+for_window [class="Library"] floating enable
+
+# In the event that you want to add more entries you'll need the
+# relevant criteria for making the windows float. Search for 'how do I
+# find the criteria for use with i3-config commands like for window
+# splashscreens
+
+# Applications to run at login
+#
+# Load a random wallpaper from the daytime folder
+exec --no-startup-id i3-msg 'exec feh --randomize --bg-fill /home/rjf/Pictures/Wallpapers/*'
+
+exec --no-startup-id i3-msg 'exec setxkbmap -layout gb -variant dvorakukp -option "ctrl:swapcaps"'
