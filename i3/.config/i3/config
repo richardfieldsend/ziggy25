@@ -240,3 +240,18 @@ exec --no-startup-id i3-msg 'exec xscreensaver'
 exec --no-startup-id i3-msg 'exec task list'
 # Activate the Compton compositor so transparency will work.
 exec --no-startup-id i3-msg 'exec compton -f -b'
+# conky enable
+exec --no-startup-id i3-msg 'exec conky'
+#
+# Apps to be started on specific desktops.
+#
+# Evolution - for the mail
+exec --no-startup-id i3-msg 'workspace 1: Evolution; exec evolution'
+# Firefox Nightly Browser
+exec --no-startup-id i3-msg 'workspace 2: Firefox; exec firefox'
+# Terminal emulator
+exec --no-startup-id i3-msg 'workspace 3: Terminal; exec i3-sensible-terminal'
+# Emacs - An operating system in need of an editor!
+exec --no-startup-id i3-msg 'workspace 4: Emacs; exec emacsclient -a "" -c "$@"'
+# Spotify
+exec --no-startup-id i3-msg 'workspace 10: Spotify; exec spotify'
