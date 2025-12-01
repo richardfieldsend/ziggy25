@@ -39,3 +39,33 @@ folder:
 ```
 ~/.config/
 ```
+A git repository can be used to store the localised copy of the
+configuration file, and then 'stow' can be used to point a softlink
+from the .config folder to the repository copy.
+
+The original use for GNU Stow was to manage large multi-user systems
+that might have multiple versions of a software package, and Stow
+would link a user to the required versions. My use case allows the
+theoretical creation of a stable version of a configuration and a
+development version where Stow can allow quick switching back and
+forth. I rarely use this, but it is available.
+
+## Managed Configurations.
+
+The various repositories I have in my Github account are a testament
+to the fact that I have managed many programs using this approach, or
+something similar, but as of the 1st December 2025, the managed
+packages in the repository are:
+
+* i3wm - A tiling window manager that is fast and sleek, and can be
+  largely driven from the keyboard. The repository contains two files
+  for i3wm. One is the configuration file which manages things like
+  the colour scheme, fonts, naming of desktops etc. The other is the
+  configuration file for the compton compositor which enables
+  transparency in i3wm. This is the default file which hasn't been
+  modified as it works as required.
+
+* i3blocks - i3blocks is a taskbar tool that it compatible with the
+  i3wm. It can be configured to display various useful information,
+  such as the amount of free space available on specific partitions
+  and the time and date.
