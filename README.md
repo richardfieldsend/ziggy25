@@ -69,3 +69,6 @@ packages in the repository are:
   i3wm. It can be configured to display various useful information,
   such as the amount of free space available on specific partitions
   and the time and date.
+
+* vim - Vim configuration file so that I can enjoy using Vim even if
+  it isn't Emacs.
