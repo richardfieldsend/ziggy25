@@ -71,4 +71,7 @@ packages in the repository are:
   and the time and date.
 
 * vim - Vim configuration file so that I can enjoy using Vim even if
-  it isn't Emacs.
+  it isn't Emacs. The configuration for Vim includes a dot file
+  (.vimrc) which is stored in the root of my home folder and a folder
+  (.vim) which stores plugins and the like (currently autoloads and a
+  colour theme).
