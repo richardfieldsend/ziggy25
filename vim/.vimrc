@@ -45,3 +45,7 @@ filetype plugin indent on
 
 " Enable automatic file saving (save every 300 seconds)
 set updatetime=300
+
+" Enable a nice dark theme (in this case 'badwolf')
+syntax enable
+colorscheme badwolf
