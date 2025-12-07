@@ -72,6 +72,11 @@ xterm*|rxvt*)
     ;;
 esac
 
+# start tmux whenever terminal starts
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -115,3 +120,24 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# install ruby gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+
+# configure Emacs (the one true editor) as the default editor
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"
+export VISUAL="emacsclient -c -a emacs"
+
+# load neofetch when terminal loads
+neofetch
+
+# configure the hledger filename
+export LEDGER_FILE=~/.finances/money.journal
+
+# put path for flashbake script into the path.
+export PATH="$HOME/.local/bin:$PATH"
+
+# export GPG key to tty
+export GPG_TTY=$(tty)
