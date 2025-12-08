@@ -65,13 +65,55 @@ packages in the repository are:
   transparency in i3wm. This is the default file which hasn't been
   modified as it works as required.
 
+```
+i3
+└── .config
+    └── i3
+        ├── compton.conf
+        └── config
+
+```
+
 * i3blocks - i3blocks is a taskbar tool that it compatible with the
   i3wm. It can be configured to display various useful information,
   such as the amount of free space available on specific partitions
   and the time and date.
+
+```
+i3blocks
+└── .config
+    └── i3blocks
+        ├── config
+        ├── i3blocks.conf
+        └── scripts
+```
 
 * vim - Vim configuration file so that I can enjoy using Vim even if
   it isn't Emacs. The configuration for Vim includes a dot file
   (.vimrc) which is stored in the root of my home folder and a folder
   (.vim) which stores plugins and the like (currently autoloads and a
   colour theme).
+
+```
+vim
+├── .vim
+│   ├── autoload
+│   │   └── plug.vim
+│   └── colors
+│       └── badwolf.vim
+└── .vimrc
+```
+
+* bash - Bash shell configuration which provides aliases and various
+  other useful functions (starting Tmux whenever the shell is opened
+  for example).
+
+```
+bash
+├── .bash_aliases
+├── .bash_logout
+├── .bashrc
+├── .profile
+└── README.md
+
+```
