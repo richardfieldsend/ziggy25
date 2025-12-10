@@ -17,3 +17,17 @@ wallpaper.
 
 This file will be updated to highlight the way the file is modified
 from the default version that ships with Linux Mint.
+
+```
+/home/rjf/zconfig/conky
+└── .config
+    └── conky
+        ├── conky.conf
+        └── README.md
+
+```
+I have kept a pretty straightforward Conky configuration. There are
+lots of examples where users have things like dials embedded in the
+desktop, but I have kept mine simple, providing useful information
+such as the aliases I might want to remember and the network traffic
+expressed both as a simple figure and as graphs.
