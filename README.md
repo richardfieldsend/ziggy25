@@ -26,7 +26,7 @@ themselves very well to being managed in a Git repository.
 
 At various times I have kept individual repositories holding the
 relevant files for each program, but some time ago I discovered a
-simple program which provides a gread method for keeping all of the
+simple program which provides a great method for keeping all of the
 required files in a single location. This program 'GNU Stow'
 ([https://www.gnu.org/software/stow/]) manages soft links, as usually
 created using the 'ln -s' command to point from a required location to
@@ -117,3 +117,27 @@ bash
 └── README.md
 
 ```
+
+* conky - Conky is a method for embedding content into the
+  desktop. Configured correctly this is transparent, allowing you to
+  enjoy the carefully curated wallpapers. The transparency requires
+  that Compton is configured appropriately (see the i3wm entry).
+
+```
+conky
+└── .config
+    └── conky
+        ├── conky.conf
+        └── README.md
+```
+
+## Notes on Building the Readme Files in This Repository.
+
+Each 'stowable' entry in the above list has included a tree showing
+the files that are tracked in the repository. This is easy to insert
+when writing the markdown file in Emacs. To do this use the keyboard
+combination: C-u M-!. At this point you are asked for the shell
+command to run, and the output of this command is inserted into the
+document. In bash the command 'tree -a <folder>' will generate the
+tree showing both the directory structure and the files contained
+therein.
