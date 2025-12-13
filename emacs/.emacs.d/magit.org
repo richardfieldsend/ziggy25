@@ -1,0 +1,18 @@
+** Magit Version Control.
+
+Git is the most popular version control platform for software
+development. It is widely supported on all computer platforms, and is
+supported by a range of graphical clients as well as straightforward
+command-line based usage. Many of the text editors favoured by
+developers have some sort of built-in Git support.
+
+And then there is Emacs and Magit. Magit is a piece of software so
+good that I subscribe to help to fund the on-going development! Simply
+put, Magit is a Git client built in to Emacs, but it is absolutely
+brilliant at what it does.
+
+#+begin_src emacs-lisp
+  ;; Enable Magit and configure the 'Git Status' keyboard shortcut C-x g
+  (use-package magit
+    :config (global-set-key (kbd "C-x g") 'magit-status))
+#+end_src
