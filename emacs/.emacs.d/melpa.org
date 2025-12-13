@@ -1,0 +1,19 @@
+** Configuring the Melpa and Non-Gnu Repositories.
+
+The following stanza configures the repositories used for downloading
+and configuring packages in Emacs.
+
+#+begin_src emacs-lisp
+  (eval-and-compile)
+  (require 'package)
+  (add-to-list 'package-archives
+  	     '("melpa" . "https://melpa.org/packages/"))
+  (add-to-list 'package-archives
+  	     '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
+  (package-initialize)
+  (package-refresh-contents)
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  (require 'use-package)
+  (setq use-package-always-ensure t)
+#+end_src

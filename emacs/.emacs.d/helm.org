@@ -1,0 +1,39 @@
+** Installing Helm Package.
+
+Helm is a package that isn't easy to describe unless you are familiar
+with Emacs itself. The name Emacs is derived from 'Editor Macros', and
+reflects a central fact about how Emacs works. At its core is a kernel
+that manages interaction with files, operating system etc, but sitting
+on top of the kernel are macros written in a dialect of Lisp (Emacs
+Lisp). Because this is the case, much of the interaction with Emacs is
+running these functions. In the case where the function isn't bound to
+a keyboard shortcut, the function is run using M-x and then entering
+the function name. Without Helm, entering these function names can be
+a lengthy process. With Helm the process is simplified.
+
+An example will help. As I'm building the configuration file I open
+each file and work on it. By default Emacs doesn't wrap lines, but I
+want the lines wrapped, especially when I am writing the prose around
+the code. The function that needs to be turned on is:
+
+(auto-fill-mode)
+
+To activate this mode enter 'M-x auto fill'
+
+As the text after M-x is entered the Helm function filters the options
+rapidly. You can continue either until just the one option is left, or
+use C-n and C-p to move the selector to the required entry.
+
+Once you have the feeling for this it begins to feel fast and natural,
+which is why it is the first capability that is activated in my Emacs
+configuration. 
+#+begin_src emacs-lisp
+  (use-package helm
+    :bind (("M-x" . helm-M-x)
+  	 ("M-<f5>" . helm-find-files)
+  	 ([f10] . helm-buffers-list)
+  	 ([S-f10] . helm-recentf))
+    :config
+    (helm-mode 1)
+    (helm-autoresize-mode))
+#+end_src
