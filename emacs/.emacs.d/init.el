@@ -24,6 +24,9 @@
 ;;
 ;; magit.org - Configure Magit for Git Version Control within Emacs.
 (org-babel-load-file (concat user-emacs-directory "magit.org"))
+;;
+;; Aesthetics - The Good, The Bad and the Darn Pretty.
+(org-babel-load-file (concat user-emacs-directory "aesthetics.org"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; End of Org file inclusion commands.

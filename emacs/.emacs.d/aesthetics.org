@@ -1,0 +1,18 @@
+** Aesthetics - The Look and Feel.
+
+Having configured Magit and Helm, Emacs has now got the bare minimum
+that I would like to have in place to make the software work. But of
+course, there are lots of things that will need to be done to make it
+as good as I know it can be.
+
+For now the configuration is addressing just the look and feel of
+Emacs. It isn't particularly ugly, but it is staid in its appearance,
+and there is screen furniture that I would like to get rid of because
+it is stuff that I don't really need or want.
+
+*** Minimise the Screen Furniture in the Emacs Window.
+
+#+begin_src emacs-lisp
+  ;; Switch off unnecessary screen furniture.
+  (menu-bar-mode 0)
+#+end_src 
