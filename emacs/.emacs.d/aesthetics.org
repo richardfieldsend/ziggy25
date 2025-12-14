@@ -151,3 +151,31 @@ M-x nerd-icons-install-fonts
 This will download and install the font and run the font update
 command.
 
+*** Making the Emacs Window Transparent.
+
+The definition of aesthetic configuration options is this one. It
+serves no real practical function, but it does make for the sort of
+eye-candy that I love.
+
+The stanza activates the transparency and configures two different
+levels of opacity. If the Emacs window is active then the opacity is
+80%, but if another program is active on the screen then the opacity
+is just 50%.
+
+As with many of the settings, these can be tweaked for greater or
+lesser transparency.
+
+In order to work, a compositor needs to be available and running. In
+the case of my i3wm login this is managed by compton. The
+configuration file for this is stored in the i3wm configuration
+folder, and I haven't made any modifications to this that I recall.
+
+#+begin_src emacs-lisp
+  ;; Transparency. The ultimate in eye-candy goodness.
+  (set-frame-parameter (selected-frame) 'alpha '(80 50))
+  (add-to-list 'default-frame-alist '(alpha 80 50))
+#+end_src
+
+Testing these settings, the transparency works as expected with the
+bad wolf theme. The background image is visible, but so is the
+text. Just what I like. 
