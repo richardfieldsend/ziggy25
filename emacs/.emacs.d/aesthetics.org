@@ -178,4 +178,47 @@ folder, and I haven't made any modifications to this that I recall.
 
 Testing these settings, the transparency works as expected with the
 bad wolf theme. The background image is visible, but so is the
-text. Just what I like. 
+text. Just what I like.
+
+*** Fancy Bullets for Org Mode.
+
+The configuration files that I'm using to customise Emacs use the
+Emacs 'Org Mode'. Org Mode is a form of MarkDown, which, like other
+MarkDown dialects use a range of simple normal characters to identify
+the structure and layout of the file. This can be used as a way of
+creating relatively straightforward documents quickly and easily.
+
+In the Org Mode Markdown the headings of the document are identified
+by one or more asterisks at the beginning of the line. One asterisk is
+a level 1 heading (equivalent to h1 in html or \section in LaTeX).
+
+The asterisks are easy to use, but Emacs also supports a prettier icon
+for each heading level which is automatically shown on the basis of
+the number of asterisks used.
+
+#+begin_src emacs-lisp
+  ;; Pretty bullets for Org Mode markdown.
+  (use-package org-bullets
+    :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+end_src
+
+Once this package is installed and operating then level 2 heading is a
+circle and level 3 is a starburst star. Pretty!
+
+A short comment on the Org file structure. The use of the
+headings/section identifiers has a useful additional feature. As the
+document gets longer and has the multiple sections then you can use a
+simple 'folding' function to hide the contents of the various sections
+of the file, seeing just the section headings. It works like this:
+
+- Navigate to the beginning of the Org file where there is a heading
+
+- Hit 'Tab' to fold all the sections. You'll just see the heading. Any
+  other headings at the same level will also be displayed.
+
+- Hit 'Tab' again and the sub-headings and the contents under the top
+  level will be displayed. Using 'Tab' allows you to cycle through the
+  visibility of the various sections.
+
+It takes a little bit of getting used to, but it is a great way of
+seeing the document structure.
