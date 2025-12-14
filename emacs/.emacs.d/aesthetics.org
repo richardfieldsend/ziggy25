@@ -101,3 +101,21 @@ With the above stanza in effect the full frame title now reads:
 Emacs - Buffer: aesthetics.org > File: /home/rjf/zconfig/emacs/
 .emacs.d/aesthetics.org
 
+*** Highlighting The Current Line.
+
+With a larger font size and what looks a good colour theme, I'm not
+sure how necessary this setting is going to prove to be, but I am
+adding it because it can make it easier to find your cursor in a sea
+of text.
+
+#+begin_src emacs-lisp
+  ;; Turn on the highlighting for the current line.
+  (global-hl-line-mode 1)
+#+end_src
+
+The highlighting is subtle, but worth keeping. It is almost invisible
+when you are working on the specific line and adding code, but move
+the cursor to an existing line and the highlighting is much more
+obvious. I guess that this is a good implementation because it makes
+it easier to find the cursor when you have moved away from the working
+point but doesn't overload the view when you are actually typing.
