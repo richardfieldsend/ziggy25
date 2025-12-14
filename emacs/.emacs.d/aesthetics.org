@@ -80,3 +80,24 @@ any alternatives for the time being.
   (set-face-attribute 'default nil
   		    :family "Hack")
 #+end_src
+
+*** A Better Frame Heading.
+
+The default Emacs frame heading is along the lines of:
+
+<filename> - GNU Emacs at <System Name>
+
+This isn't bad, but I don't think I really need the system name on
+display, and it would be useful to identify the filename and buffer
+name in case these are different.
+
+#+begin_src emacs-lisp
+  ;; Modifying the frame title shown for the Emacs window.
+  (setq frame-title-format '("Emacs - Buffer: %b > File: %f"))
+#+end_src
+
+With the above stanza in effect the full frame title now reads:
+
+Emacs - Buffer: aesthetics.org > File: /home/rjf/zconfig/emacs/
+.emacs.d/aesthetics.org
+
