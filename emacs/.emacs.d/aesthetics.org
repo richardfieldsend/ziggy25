@@ -222,3 +222,25 @@ of the file, seeing just the section headings. It works like this:
 
 It takes a little bit of getting used to, but it is a great way of
 seeing the document structure.
+
+*** Emacs Fire - I'll Teach You To Burn.
+
+In the write-up for transparency I mentioned that that was probably
+the biggest purely aesthetic plug-in for Emacs, but, in hindsight the
+Emacs fireplace has it beat!
+
+Start the fireplace using the command:
+
+M-x fireplace
+
+The fire can be controlled using:
+
+C-+ - Move fire up
+C-- - Move fire down
+C-* - Toggle smoke on and off
+q   - Quit the fireplace
+
+#+begin_src emacs-lisp
+  ;; Fireplace you can't cook marshmallows on.
+  (use-package fireplace)
+#+end_src
