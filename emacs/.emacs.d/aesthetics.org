@@ -47,3 +47,17 @@ modify the text displayed in the next section.
       (setq initial-scratch-message
   	  "\n\n\n\tEverything's science-fiction until someone makes it science fact.\n\n\t\tMarie Lu"))
 #+end_src
+
+*** Turn On a Suitable Dark Mode.
+
+#+begin_src emacs-lisp
+  ;; badwolf theme (for the time being)
+  (load-theme 'badwolf t)
+#+end_src
+
+To make the themes work use 'package-install' and install the theme
+first, then use the above to activate the required theme. I have also
+installed dracula so I can switch back and forth without any further
+action. I use badwolf in Vim as well, so it may be nice to have visual
+similarity, but also need to consider which colour scheme is nicer
+going forward.
