@@ -61,3 +61,22 @@ installed dracula so I can switch back and forth without any further
 action. I use badwolf in Vim as well, so it may be nice to have visual
 similarity, but also need to consider which colour scheme is nicer
 going forward.
+
+*** Set a Nice Font.
+
+I got into a bit of a broken state, so ended up winding back to the
+previous commit!
+
+A nice, easy to read font is a must when you consider the look and
+feel of a text editor. Hack is a popular choice, and I'm currently
+settling on size 12, but I may make it a bit smaller going forward.
+
+The text is easy to read and nice and friendly, so I won't investigate
+any alternatives for the time being.
+
+#+begin_src emacs-lisp
+  ;; Set the font to hack
+  (add-to-list 'default-frame-alist '(font . "Hack-12"))
+  (set-face-attribute 'default nil
+  		    :family "Hack")
+#+end_src
