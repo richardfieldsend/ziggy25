@@ -244,3 +244,18 @@ q   - Quit the fireplace
   ;; Fireplace you can't cook marshmallows on.
   (use-package fireplace)
 #+end_src
+
+*** IBM Selectric Mode.
+
+The rest of this file has been about the aesthetics of the Emacs
+display. This isn't aesthetics, but it also isn't a useful function,
+it is the auditory equivalent of aesthetics. The function, when
+activated, makes Emacs keystrokes make the same iconic sound as a
+classic IBM Selectric typewriter.
+
+#+begin_src emacs-lisp
+  ;; Selectrics Mode
+  (use-package selectric-mode)
+  (require 'selectric-mode)
+#+end_src
+
