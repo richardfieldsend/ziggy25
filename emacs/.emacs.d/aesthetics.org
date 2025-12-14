@@ -12,7 +12,26 @@ it is stuff that I don't really need or want.
 
 *** Minimise the Screen Furniture in the Emacs Window.
 
+Keep the Emacs window as clean as possible by switching off the stuff
+that isn't needed, which is almost everything.
+
 #+begin_src emacs-lisp
   ;; Switch off unnecessary screen furniture.
-  (menu-bar-mode 0)
+  (menu-bar-mode 0)			; No menu bar
+  (tool-bar-mode 0)			; No tool icon bar
+  (blink-cursor-mode 0)			; Steady, non-blinking cursor
+  (scroll-bar-mode 0)			; Hide the scroll bar
+  (display-battery-mode 1)		; Battery info in the mode line
 #+end_src 
+
+*** Turn Off the Splash Screen.
+
+This doesn't really have any impact when I am using Emacs client as
+the splash screen isn't shown in Emacs client mode. Turning it off
+anyway for those rare occasions where I do use the normal Emacs. I'll
+modify the text displayed in the next section.
+
+#+begin_src emacs-lisp
+  ;; Switch off the splash screen.
+  (setq inhibit-startup-message t)
+#+end_src
