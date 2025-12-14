@@ -1,0 +1,123 @@
+** Dired - The Emacs Built-in File Manager.
+
+Dired is a simple text based file manager which is built in to
+Emacs. At its simplest, it displays the files that are in a specified
+folder, and allows you to navigate to and open a file. The following
+sections provide some commentary on using Dired as well as enabling
+some extra functionality.
+
+I don't advocate looking at Dired as a full-function file management
+system. But it can be used to do straightforward things such as
+creating folders, creating new files and deleting ones that aren't
+required anymore.
+
+The best 'ooh, that is handy' function is the ability to do a search
+and replace for specific text across multiple files entirely within
+Dired. This is described below.
+
+*** Viewing the Contents of a Folder Within Dired.
+
+To view the contents of a folder use the Emacs 'find file' function:
+
+C-x C-f
+
+or to open Dired directly use:
+
+C-x d
+
+and then enter the folder that you are interested in. The contents of
+the folder will be displayed.
+
+The default sort order is alphabetical, but pressing s will change
+sort order to creation order, with the oldest file at the bottom of
+the list and the newest at the top. Temporary files created and
+associated with a buffer which is being worked on will have #
+characters added to the filename. They will be deleted automatically
+when the file is saved.
+
+*** Creating and Deleting Files within Dired.
+
+The command for creating a new file is the same within Dired as it is
+for the rest of the time.
+
+C-x C-f - Find file
+
+Add the file name in the transient area at the foot of the Emacs page
+and the file will be created and ready to add text.
+
+The command for deleting files within Dired is more
+straightforward. When looking at the contents of the folder, the
+selection bar can be moved up and down using n/p. If the selection bar
+is over a file that is slated to be deleted then press d for
+delete. The file isn't deleted straightaway. Select the files that you
+want to delete and then press the x key to execute the deletion.
+
+Later on, when the 'backup' function has been activated then there
+will be some circumstances where multiple backup files may be created,
+indicated by a tilde suffix. A shortcut to selecting all the files
+designated with these tildes (~) is to type the ~ key. This will
+select all the files which can then be deleted using the x key as
+before.
+
+*** Text Search and Replace from the Dired Buffer.
+
+A real 'woah, cool' capability of the Emacs Dired is the ability to do
+search and replace across multiple files in a folder.
+
+The instructions are available here:
+
+https://www.emacswiki.org/emacs/DiredSearchAndReplace
+
+The process is straightforward:
+
+- Mark which files you wish to edit. This can be a simple case of
+  using 'm' (mark) to pick the files manually, or you can select the
+  files on the basis of a regular expression search against the
+  filename (% m) or on the basis of a regular expression search of the
+  contents of the files in the folder (% g).
+
+- Having selected the file(s) to work on entering Q will start a
+  'query-replace-regexp' process. Well crafted regular expressions can
+  do quite remarkable modifications on the text in the selected files,
+  but it is still a useful capability when using the simplest search
+  and replace approach.
+
+The Emacs Wiki page also highlights the fact that it is possible to do
+recursive file matching using:
+
+find-grep-dired - find all files containing a grep match
+find-name-dired - find all filenames matching a shell wildcard pattern
+find-dired - match freeform arguments using standard Linux 'find'
+
+These functions are advanced, and would require some checking on
+either the Emacs wiki or the find man pages.
+
+*** Recent File Function.
+
+This isn't directly a Dired function, but it does concern the file
+management.
+
+If you are working on a longer file then it is likely that you will
+return to the same files repeatedly. In many modern programs there is
+a section of the 'File' menu that shows the recent files to provide
+quick access to these files.
+
+Emacs supports this approach, and supercharges it by keeping a long
+list of the recent files that can be viewed. The top 10 files can be
+opened simply by selecting the number used to label the file, and the
+selection bar can be moved up and down, again using the n/p keys and
+the selected file can be opened using the return key.
+
+#+begin_src emacs-lisp
+  ;; Configure recent file functionality.
+  (use-package recentf
+    :config
+    (setq recentf-save-file "~/.backups/.recentf")
+    recentf-max-saved-items 100
+    recentf-max-menu-items 100
+    (recentf-mode +1)
+    (global-set-key (kbd "C-x C-r") 'recentf-open-files))
+  (run-at-time nil (* 5 60) 'recentf-save-list)
+#+end_src
+
+A timeout to save the list of recent files every 5 minutes is added.

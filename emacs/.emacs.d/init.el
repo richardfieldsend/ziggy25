@@ -27,6 +27,9 @@
 ;;
 ;; Aesthetics - The Good, The Bad and the Darn Pretty.
 (org-babel-load-file (concat user-emacs-directory "aesthetics.org"))
+;;
+;; Dired - File management in Dired, the Emacs file manager.
+(org-babel-load-file (concat user-emacs-directory "diredconf.org"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; End of Org file inclusion commands.
