@@ -35,3 +35,15 @@ modify the text displayed in the next section.
   ;; Switch off the splash screen.
   (setq inhibit-startup-message t)
 #+end_src
+
+*** Change Scratch Buffer Text Display.
+
+#+begin_src emacs-lisp
+  ;; Display pithy text based on the system name.
+  (if (string=(system-name) "ziggyi5")
+      (setq initial-scratch-message
+  	  "\n\n\n\t\tWelcome to the Church of Emacs..."))
+  (if (string=(system-name) "uk-rfieldse-l")
+      (setq initial-scratch-message
+  	  "\n\n\n\tEverything's science-fiction until someone makes it science fact.\n\n\t\tMarie Lu"))
+#+end_src
