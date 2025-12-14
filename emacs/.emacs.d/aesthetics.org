@@ -119,3 +119,35 @@ the cursor to an existing line and the highlighting is much more
 obvious. I guess that this is a good implementation because it makes
 it easier to find the cursor when you have moved away from the working
 point but doesn't overload the view when you are actually typing.
+
+*** Replace the Standard Modeline with the Doom Emacs Version.
+
+The standard modeline isn't bad. It contains useful information such
+as the file name, active mode and your location within the file (as
+I'm writing this I am at the bottom of the file, which happens to be
+line 128 and I'm working on the 'Emacs' branch of the repository.
+
+However, the modeline isn't pretty, so I have previously swapped out
+the standard one for the Doom Emacs version. It is just a bit more
+'eye candy'.
+
+#+begin_src emacs-lisp
+  ;; Activate the Doom Emacs Mood Line.
+  (use-package doom-modeline
+    :ensure t
+    :init (doom-modeline-mode 1))
+#+end_src
+
+The Doom Emacs modeline includes an icon to display the file type at
+the left hand side. If this doesn't show the icon then follow the
+instructions below. By 'properly', the usual behaviour is to show a
+Unicode character which is displayed as a square with squiggles inside
+it.
+
+To install the icons use the command:
+
+M-x nerd-icons-install-fonts
+
+This will download and install the font and run the font update
+command.
+
