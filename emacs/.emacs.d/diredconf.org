@@ -121,3 +121,27 @@ the selected file can be opened using the return key.
 #+end_src
 
 A timeout to save the list of recent files every 5 minutes is added.
+
+*** Display Useful Git Related Information in the Dired Display.
+
+Using Git for version control in Emacs using Magit is a real
+demonstration of how great a plug-in can be. To update yourself on the
+Git status of a repository, then the default way of doing this is
+using the C-x g (magit-status) command. However, there are times when
+displaying Git information in Dired may be useful.
+
+#+begin_src emacs-lisp
+  ;; Git Information in Dired Mode
+  (use-package dired-git-info)
+  (with-eval-after-load 'dired
+    (define-key dired-mode-map ")" 'dired-git-info-mode))
+#+end_src
+
+If the folder being visited in Dired is a Git repository then entering
+the ) key will display information alongside all the files which are
+under Git control. The information is the most recent Git commit
+message associated with that file and the time since that file was
+saved.
+
+It isn't a replacement for Git status, but it may be a useful
+crosscheck.
