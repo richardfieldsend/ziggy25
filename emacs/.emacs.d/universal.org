@@ -1,0 +1,28 @@
+** Universal Functions and Capabilities.
+
+Settings in this file are considered to be of use pretty much
+universally within Emacs. This makes them different from those
+functions that are specific to modes such as programming in a
+particular language or generating a document in a particular markup
+language.
+
+The sort of functions in question are things like adding the closing
+bracket whenever the opening bracket is inserted, having word wrapping
+switched on by default etc.
+
+*** Making the Default Search Mode 'Regular Expression' Based.
+
+Without the following settings the standard search within Emacs, the
+ones accessed using C-s (search forward) and C-r (search backwards)
+both use the simple text match. In this case the regular expression
+based searching are available using C-M-s and C-M-r. Given how
+powerful regular expression searching is, the stanza below makes the
+default search type regular expression.
+
+#+begin_src emacs-lisp
+  ;; use regular expression searching by default.
+  (global-set-key (kbd "C-s") 'isearch-forward-regexp)
+  (global-set-key (kbd "C-r") 'isearch-backward-regexp)
+  (global-set-key (kbd "C-M-s") 'isearch-forward)
+  (global-set-key (kbd "C-M-r") 'isearch-backward)
+#+end_src

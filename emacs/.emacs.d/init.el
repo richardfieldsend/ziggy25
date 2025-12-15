@@ -30,6 +30,9 @@
 ;;
 ;; Dired - File management in Dired, the Emacs file manager.
 (org-babel-load-file (concat user-emacs-directory "diredconf.org"))
+;;
+;; Universal - Functions and settings that are useful everywhere.
+(org-babel-load-file (concat user-emacs-directory "universal.org"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; End of Org file inclusion commands.
