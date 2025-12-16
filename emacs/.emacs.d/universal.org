@@ -26,3 +26,57 @@ default search type regular expression.
   (global-set-key (kbd "C-M-s") 'isearch-forward)
   (global-set-key (kbd "C-M-r") 'isearch-backward)
 #+end_src
+
+*** Parenthesis Pairing - Add the closing bracket automatically.
+
+Use electric pair mode will insert the closing entry for a bracket or
+similar parenthesis. In this case the definition of bracket includes:
+
+parenthesis - ()
+square brackets - []
+curly brackets - {}
+speech marks - ""
+single quotes - ''
+
+The single quotes pairing can be a tricky when writing prose or
+Lisp. I should investigate whether this can be switched on or off for
+particular modes, or have an easy way to undo the second insertion.
+
+#+begin_src emacs-lisp
+  ;; Electric brackets
+  (use-package electric
+  		    :ensure t
+  		    :init
+  		    :config (add-hook 'prog-mode-hook 'electric-pair-mode)
+  		    :config (add-hook 'LaTeX-mode-hook 'electric-pair-mode)
+  		    :config (add-hook 'latex-mode-hook 'electric-pair-mode)
+  		    :config (add-hook 'text-mode-hook 'electric-pair-mode)
+  		    :config (add-hook 'org-mode-hook 'electric-pair-mode)
+  		    :config (add-hook 'pov-mode-hook 'electric-pair-mode))
+#+end_src
+
+*** Rainbow Colouring for Parenthesis and Brackets.
+
+The above code is useful for inserting various brackets and delimiters
+in pairs. However, as you are editing it would be simple to end up
+deleting one of these bracket characters, and suddenly you are in the
+situation where you aren't sure whether your brackets are suitably
+balanced or not.
+
+The following code provides a way of checking the balance of the
+brackets by colouring each opening and closing half of the pair in the
+same colour and cycling through the colours as sets of brackets are
+recursively added.
+
+#+begin_src emacs-lisp
+  ;; Rainbow delimiters for brackets, curly and square braces
+  (use-package rainbow-delimiters
+    :ensure t
+    :init
+    :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+    :config (add-hook 'LaTeX-mode-hook 'rainbow-delimiters-mode)
+    :config (add-hook 'latex-mode-hook 'rainbow-delimiters-mode)
+    :config (add-hook 'text-mode-hook 'rainbow-delimiters-mode)
+    :config (add-hook 'org-mode-hook 'rainbow-delimiters-mode)
+    :config (add-hook 'pov-mode-hook 'rainbow-delimiters-mode))
+#+end_src
