@@ -80,3 +80,28 @@ recursively added.
     :config (add-hook 'org-mode-hook 'rainbow-delimiters-mode)
     :config (add-hook 'pov-mode-hook 'rainbow-delimiters-mode))
 #+end_src
+
+The Bad Wolf theme cycles through the colours for rainbow parentheses
+with strong enough colours that it makes the rainbow bracket function
+an effective check on bracket pairing.
+
+*** Bracket/Parentheses Pair Highlighting Function.
+
+The next function in the list that I would normally set up triggers
+highlighting of the matching half of a pair of brackets when the
+cursor is on the other half. This setting is managed using the
+'show-paren-mode variable, setting this to 1. Checking, the value is
+already set to the equivalent value of t (for true).
+
+The highlight actually happens as follows:
+
+For a pair of brackets with a space between them, as below, if the
+cursor is on the opening item of the pair then the closing item is
+highlighted. If the cursor is immediately after the closing item then
+both the opening and closing bracket are highlighted in the same
+colour.
+
+( )
+
+I'll leave the pair in place above so they can be used for testing and
+to familiarise or remind the reader of the behaviour.
