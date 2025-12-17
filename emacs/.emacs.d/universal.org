@@ -105,3 +105,57 @@ colour.
 
 I'll leave the pair in place above so they can be used for testing and
 to familiarise or remind the reader of the behaviour.
+
+*** Spell Checking - On-the-fly Spell Check using UK British Dictionary.
+
+Obviously want to use the British dictionary, what with speaking and
+writing proper English...
+
+#+begin_src emacs-lisp
+  ;; spellchecking using aspell and configuring to use British.
+  (setq ispell-program-name "/usr/bin/aspell")
+  (setq ispell-dictionary "british"
+        ispell-extra-args '() ;; Tex mode "-t"
+        ispell-silently-savep t)
+
+  ;; Configure a personal dictionary.
+  (setq ispell-personal-dictionary "~/.backups/ispell-personal-dictionary")
+
+  ;; Flyspell to do the spell checking on the fly.
+  (use-package flyspell
+    :ensure t
+    :init
+    :config (add-hook 'text-mode-hook 'flyspell-mode)
+    :config (add-hook 'prog-mode-hook 'flyspell-mode)
+    :config (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+    :config (add-hook 'latex-mode-hook 'flyspell-mode)
+    :config (add-hook 'org-mode-hook 'flyspell-mode))
+
+  ;; Flyspell correct helm
+  (use-package flyspell-correct
+    :after flyspell
+    :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+  (use-package flyspell-correct-helm
+    :after flyspell-correct)
+#+end_src
+
+The settings above configure the following:
+
+- A location for the personal dictionary file (this is stored in the
+  same location as other useful files such as the backups, recentf
+  list etc).
+
+- Activate 'flyspell' on the fly spell-checking and enable this for
+  the appropriate modes
+
+- Activate 'flyspell-correct' and its 'helm' selection tool as a quick
+  way of getting spell-checking done. The helm selection is triggered
+  using C-;.
+
+- If the word that is marked as being mis-spelled is one that you wish
+  to add to the personal dictionary then use ispell-word, not the
+  flyspell-correct wrapper. Trigger the ispell word option using
+  M-$. Initially ispell-word will suggest close matches which can be
+  selected using the label shown. To add the word to the dictionary
+  open the options using C-h, and press 'i' to add to the dictionary.
+
