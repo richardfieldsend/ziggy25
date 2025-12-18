@@ -186,7 +186,10 @@ line numbering reflects the folding process.
 *** Line Wrapping On By Default.
 
 I've been switching on line wrapping as I went along, but the
-following stanza turns it on everywhere at launch.
+following stanza turns it on everywhere at launch. In Vim I use a
+setting where the lines are numbered relative to the current line
+which updates as you move around the file. I have chosen not to use
+this approach in Emacs.
 
 #+begin_src emacs-lisp
   ;; Activate auto-fill in all the modes.
@@ -199,4 +202,5 @@ following stanza turns it on everywhere at launch.
   (add-hook 'prog-mode-hook 'turn-on-auto-fill)
 #+end_src
 
-This is an example of using the 'hook' for each mode.
+This is an example of using the 'hook' for each mode. A similar setup
+will be appearing quite a lot going through these configuration files.
