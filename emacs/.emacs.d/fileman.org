@@ -1,0 +1,50 @@
+** File Management Configuration.
+
+This document provides the configuration for file functions not
+directly related to the use of Dired. This includes functions like
+making backups of files and a setting to return users to the same
+place when re-opening a file.
+
+*** File Backup Configuration.
+
+The default behaviour for Emacs backup is to create a single backup of
+a file at the last save state, with the backup file being denoted with
+a tilde (~) character at the end of the filename. There are a number
+of settings available, to enhance this capability. One includes
+creating a numbered backup, with the ability to set how many numbered
+backups to keep. These are all useful abilities, but they do have a
+nasty habit of creating multiple files, and if these are kept, as they
+are by default, in the same folder as the original files then the
+backups can become so numerous as to hide the wood for the trees.
+
+The configuration below is intended to address this last concern while
+making use of the abilities of Emacs. A series of numbered backups are
+created when files are updated and saved, and the files are trimmed to
+save the oldest and most recent files. These backups are stored in a
+single shared location.
+
+#+begin_src emacs-lisp
+  ;; Set backup configuration target directory and behaviour.
+  (setq backup-directory-alist
+  	'(("." . "~/.backups/")))
+  (setq backup-by-copying t
+        make-backup-files t
+        delete-old-versions t
+        kept-new-versions 5
+        kept-old-versions 2
+        version-control t
+        auto-save-interval 50)
+#+end_src
+
+These settings activate the process of backing up files in the
+.backups folder with numbered file extensions.
+
+The creation of these backup files is triggered by saving the
+file. There is a similar process where a temporary file is generated
+in the same folder as the original file. This is a file to guard
+against the crashing of the Emacs process, and the file is updated
+either every 5 minutes (300 seconds) or every 50 keystrokes
+(auto-save-interval). This temporary file is removed whenever the
+actual file is successfully saved.
+
+

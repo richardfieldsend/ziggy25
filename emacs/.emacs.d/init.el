@@ -31,6 +31,11 @@
 ;; Dired - File management in Dired, the Emacs file manager.
 (org-babel-load-file (concat user-emacs-directory "diredconf.org"))
 ;;
+;; FileMan - Other file management functions such as keeping backups
+;; of files in a single location, returning to the same place when
+;; re-opening files.
+(org-babel-load-file (concat user-emacs-directory "fileman.org"))
+;; 
 ;; Universal - Functions and settings that are useful everywhere.
 (org-babel-load-file (concat user-emacs-directory "universal.org"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
