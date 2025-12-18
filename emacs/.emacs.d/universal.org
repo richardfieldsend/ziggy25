@@ -112,31 +112,31 @@ Obviously want to use the British dictionary, what with speaking and
 writing proper English...
 
 #+begin_src emacs-lisp
-  ;; spellchecking using aspell and configuring to use British.
-  (setq ispell-program-name "/usr/bin/aspell")
-  (setq ispell-dictionary "british"
-        ispell-extra-args '() ;; Tex mode "-t"
-        ispell-silently-savep t)
+    ;; spellchecking using aspell and configuring to use British.
+    (setq ispell-program-name "/usr/bin/aspell")
+    (setq ispell-dictionary "british"
+          ispell-extra-args '() ;; Tex mode "-t"
+          ispell-silently-savep t)
 
-  ;; Configure a personal dictionary.
-  (setq ispell-personal-dictionary "~/.backups/ispell-personal-dictionary")
+    ;; Configure a personal dictionary.
+    (setq ispell-personal-dictionary "~/.backups/ispell-personal-dictionary")
 
-  ;; Flyspell to do the spell checking on the fly.
-  (use-package flyspell
-    :ensure t
-    :init
-    :config (add-hook 'text-mode-hook 'flyspell-mode)
-    :config (add-hook 'prog-mode-hook 'flyspell-mode)
-    :config (add-hook 'LaTeX-mode-hook 'flyspell-mode)
-    :config (add-hook 'latex-mode-hook 'flyspell-mode)
-    :config (add-hook 'org-mode-hook 'flyspell-mode))
+    ;; Flyspell to do the spell checking on the fly.
+    (use-package flyspell
+      :ensure t
+      :init
+      :config (add-hook 'text-mode-hook 'flyspell-mode)
+      :config (add-hook 'prog-mode-hook 'flyspell-mode)
+      :config (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+      :config (add-hook 'latex-mode-hook 'flyspell-mode)
+      :config (add-hook 'org-mode-hook 'flyspell-mode))
 
-  ;; Flyspell correct helm
-  (use-package flyspell-correct
-    :after flyspell
-    :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
-  (use-package flyspell-correct-helm
-    :after flyspell-correct)
+    ;; Flyspell correct helm
+    (use-package flyspell-correct
+      :after flyspell
+      :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+    (use-package flyspell-correct-helm
+      :after flyspell-correct)
 #+end_src
 
 The settings above configure the following:
@@ -159,3 +159,26 @@ The settings above configure the following:
   selected using the label shown. To add the word to the dictionary
   open the options using C-h, and press 'i' to add to the dictionary.
 
+*** Grammar Checking using Flycheck.
+
+Whenever I enabled the flycheck the Scratch buffer just locked up and
+wouldn't respond to the keyboard! So I'm leaving this out for now.
+
+*** Global Line Numbering.
+
+Modern programming languages don't require line numbers, but it can
+still be a useful addition to the buffer display to show line
+numbers. The line numbers will be shown in the right hand 'gutter' of
+the buffer.
+
+#+begin_src emacs-lisp
+  ;; Activate line numbering.
+  (global-display-line-numbers-mode t)
+#+end_src
+
+The numbers can be used as a navigation method:
+
+- M-g g - Then enter the number of the line to move to.
+
+If using the 'folding' function to hide sections of the file then the
+line numbering reflects the folding process. 
