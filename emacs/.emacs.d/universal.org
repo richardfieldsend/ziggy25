@@ -181,4 +181,22 @@ The numbers can be used as a navigation method:
 - M-g g - Then enter the number of the line to move to.
 
 If using the 'folding' function to hide sections of the file then the
-line numbering reflects the folding process. 
+line numbering reflects the folding process.
+
+*** Line Wrapping On By Default.
+
+I've been switching on line wrapping as I went along, but the
+following stanza turns it on everywhere at launch.
+
+#+begin_src emacs-lisp
+  ;; Activate auto-fill in all the modes.
+  (add-hook 'text-mode-hook 'turn-on-auto-fill)
+  (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+  (add-hook 'latex-mode-hook 'turn-on-auto-fill)
+  (add-hook 'org-mode-hook 'turn-on-auto-fill)
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-auto-fill)
+  (add-hook 'fundamental-mode-hook 'turn-on-auto-fill)
+  (add-hook 'prog-mode-hook 'turn-on-auto-fill)
+#+end_src
+
+This is an example of using the 'hook' for each mode.
