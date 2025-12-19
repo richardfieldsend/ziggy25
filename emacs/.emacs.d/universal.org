@@ -241,3 +241,14 @@ files, user location in a range of files and backups of edited files.
   (savehist-mode 1)
 #+end_src
 
+*** Whitespace Trimming.
+
+The whitespace trimming function is configured to trigger whenever a
+file is saved ('before save hook'), and it removes any excessive
+whitespace either at the end of the document or at the end of lines.
+
+#+begin_src emacs-lisp
+  ;; Remove blank lines from the end of the file and whitespace at
+  ;; the end of lines.
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+end_src
