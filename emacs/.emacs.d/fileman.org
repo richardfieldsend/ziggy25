@@ -47,4 +47,16 @@ either every 5 minutes (300 seconds) or every 50 keystrokes
 (auto-save-interval). This temporary file is removed whenever the
 actual file is successfully saved.
 
+*** Save Place - Return to the same location when reopening a file.
+
+When working on any sort of longer project, there is a good chance
+that you will be returning to the same files repeatedly. These
+settings configure a placeholder file (again, stored in the .backups
+folder) which returns you to the same location when re-opening a file.
+
+#+begin_src emacs-lisp
+  ;; SavePlace - Return to the same location when re-opening a file.
+  (save-place-mode 1)
+  (setq save-place-file "~/.backups/.places")
+#+end_src
 
