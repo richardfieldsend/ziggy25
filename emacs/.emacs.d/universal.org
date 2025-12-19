@@ -204,3 +204,40 @@ this approach in Emacs.
 
 This is an example of using the 'hook' for each mode. A similar setup
 will be appearing quite a lot going through these configuration files.
+
+*** Save Bash Style History List of Commands in Emacs.
+
+One of the tropes about Linux users is how lazy some terminal users
+may be when it comes to running commands that they have previously
+typed. Rather than trying to remember the correct combination of flags
+for a particular command, they will repeatedly bash the up arrow key,
+scanning back through the list of previous commands to find their
+previous use of the required command. Of course, the proper way of
+doing this is to use the 'reverse search' option of C-r in Bash and
+then doing a progressive search by entering the required text!
+
+Or, alternatively you can generate a list of the commands that you
+have used by running the 'history' command which will display the
+commands executed in the recent past.
+
+As Emacs is sometimes seen as an environment that users will want to
+spend a lot of time in, it is understandable that similar
+functionality may be required, and to this end, Emacs provides the
+option to generate a history file.
+
+As should be expected by now, this file is stored in the .backups
+folder alongside things like the files that keep a list of recent
+files, user location in a range of files and backups of edited files.
+
+#+begin_src emacs-lisp
+  ;; Persistent command history between Emacs sessions.
+  (setq savehist-file "~/.backups/emacs-history"
+        history-delete-duplicates t
+        savehist-save-minibuffers-history 1
+        savehist-additional-variables
+        '(kill-ring
+  	search-ring
+  	regexp-search-ring))
+  (savehist-mode 1)
+#+end_src
+
