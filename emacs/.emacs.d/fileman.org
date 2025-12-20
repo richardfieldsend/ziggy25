@@ -95,3 +95,9 @@ helm version of this function.
 
 The bookmarks list displays the tag associated with the bookmark and
 the file path to the file where the bookmark is pointing.
+
+Managing the bookmarks list can be done using similar keyboard actions
+to those used in Dired. If a bookmark is no longer required then it
+can be marked for deletion using the 'd' key (a D will be displayed at
+the start of the line in the list), and the deletion can then be
+achieved using the 'x' key (for eXecute).
