@@ -60,3 +60,24 @@ folder) which returns you to the same location when re-opening a file.
   (setq save-place-file "~/.backups/.places")
 #+end_src
 
+*** Bookmarking In Emacs.
+
+Bookmarks are available as a way of being able to find your way to a
+specific point in a specific document, quickly and easily.
+
+As with many of the other settings, the file for storing bookmarks is
+kept in the .backups folder.
+
+#+begin_src emacs-lisp
+  ;; Configure storage location for bookmarks.
+  (set 'bookmark-default-file "~/.backups/.bookmarks")
+#+end_src
+
+There are three related activities for working with bookmarks. These
+are:
+
+C-x r m - Mark the current location with a bookmark.
+
+C-x r b - Jump to a bookmark.
+
+C-x r l - List the available bookmarks.
