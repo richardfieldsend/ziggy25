@@ -252,3 +252,13 @@ whitespace either at the end of the document or at the end of lines.
   ;; the end of lines.
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
+
+*** Simplified Response to Yes/No Questions.
+
+On those occasions when there is a yes/no question in Emacs this
+function changes the response to y/n for ease of typing.
+
+#+begin_src emacs-lisp
+  ;; Use y/n rather than yes/no
+  (fset 'yes-or-no-p 'y-or-n-p)
+#+end_src
