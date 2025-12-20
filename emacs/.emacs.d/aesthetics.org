@@ -22,7 +22,7 @@ that isn't needed, which is almost everything.
   (blink-cursor-mode 0)			; Steady, non-blinking cursor
   (scroll-bar-mode 0)			; Hide the scroll bar
   (display-battery-mode 1)		; Battery info in the mode line
-#+end_src 
+#+end_src
 
 *** Turn Off the Splash Screen.
 
@@ -42,7 +42,7 @@ modify the text displayed in the next section.
   ;; Display pithy text based on the system name.
   (if (string=(system-name) "ziggyi5")
       (setq initial-scratch-message
-  	  "\n\n\n\t\tWelcome to the Church of Emacs..."))
+  	  (shell-command-to-string "fortune computers linux literature love magic medicine men-women people pets pratchett science startrek")))
   (if (string=(system-name) "uk-rfieldse-l")
       (setq initial-scratch-message
   	  "\n\n\n\tEverything's science-fiction until someone makes it science fact.\n\n\t\tMarie Lu"))
@@ -270,4 +270,3 @@ doesn't produce a sound.
 However, I have just noticed that as you type with the auto-fill-mode
 switched on then there is a tiny 'ding' sound at the point when the
 line wrap is going to happen. This little thing makes me happy!
-
