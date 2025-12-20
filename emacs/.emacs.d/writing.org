@@ -176,3 +176,23 @@ takes up a section about 40% of the bottom of the screen. The standard
 keystrokes work as expected. That is, I can write a few lines of this
 document and it will move the cursor towards the bottom of the screen,
 but I can then recenter the line that the cursor is on using C-l.
+
+Write Room Mode can be switched off by using M-x writeroom-mode again.
+
+**** Low Distraction Mode 2 - Olivetti Mode.
+
+The configuration for Olivetti Mode:
+
+#+begin_src emacs-lisp
+  ;; Olivetti Mode.
+  (use-package olivetti)
+  (require 'olivetti)
+#+end_src
+
+Olivetti mode is less invasive that Write Room Mode. It doesn't change
+the screen size, or hide the title bar or modeline bar. It also keeps
+the Emacs transparency and adds the large borders on the left and
+right. The width of the text section can be increased using C-c } and
+decreased using C-c {. Alternatively, the width of the text section
+can be set by using C-c \ and then entering the width as a numerical
+value.
