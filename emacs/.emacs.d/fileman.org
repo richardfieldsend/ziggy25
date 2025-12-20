@@ -81,3 +81,17 @@ C-x r m - Mark the current location with a bookmark.
 C-x r b - Jump to a bookmark.
 
 C-x r l - List the available bookmarks.
+
+Notes:
+
+Marking the bookmark requests a name or tag for the bookmark, and
+offers the filename as a default value. A meaningful name can be used
+instead which may help in using the bookmarks going forward.
+
+Helm provides a 'helm-bookmarks' function, providing text narrowing as
+a way of finding bookmarks rapidly. The helm.org configuration has
+been modified so that the 'jump to bookmark' function above uses the
+helm version of this function.
+
+The bookmarks list displays the tag associated with the bookmark and
+the file path to the file where the bookmark is pointing.
