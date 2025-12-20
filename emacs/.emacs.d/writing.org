@@ -1,0 +1,145 @@
+** Writing - Functions for Writing Human Text.
+
+The functions in this configuration file help in the creation of
+text files which are aimed at humans rather than computers. Functions
+include, but are not limited to abbreviation expansion, writing LaTeX
+files, Groff files and Markdown.
+
+*** Text Expansion - Configured Phrase Insertions and Dynamic Text.
+
+A long time ago, when I was writing up research and living in
+Leicester, I wanted to find a way of simplifying writing the reports
+on my research. The problem I wanted to address was the need to type
+the words 'Weissenberg Rheogoniometer' (a piece of equipment used in
+the research) repeatedly and reliably. If you are writing text that
+includes repeated uses of terms which are long, complex, or just
+frequent, then it would be nice to be able to simplify the process. I
+was writing using WordPerfect 5.1 at the time. To this day, I think
+that is one of the best word processors I have ever used. It was fast,
+even on limited hardware, and when connected to a good printer then
+the output was very attractive. What qualified as a good printer at
+the time was a Canon Bubblejet printer, so, obviously, times have
+moved on! I did find a partial answer to my issue in WordPerfect. The
+approach was to assign some abbreviation or shortened form of the
+phrases that you would expect to appear in the document, to type them
+and then carry out a key chord which would trigger expanding the
+text. If memory serves, it was also possible to run a command across
+the whole document which would expand all the occurrences, but this is
+more than 30 years ago and I may be mis-remembering. But it wasn't the
+perfect solution.
+
+Move forward through history, and arrive at my adventures with
+learning and using Emacs. I don't have to write a report about using
+large items of laboratory equipment anymore, but the desire to speed
+my typing up by using a number of shortcuts that will automatically
+expand has never gone away, and Emacs's implementation is everything I
+would have wanted.
+
+**** Dynamic Text Expansion.
+
+While there are words or phrases that you might want to have
+expansions for across a whole range of documents, such as people's
+names, fixes for common mis-spellings etc, and these are addressed
+below, the ability to carry out dynamic text expansions is a really
+useful feature in Emacs. And it doesn't require setting up a
+configuration, it is built-in by default.
+
+To use this dynamic text expansion is straightforward. If you know, or
+suspect that a term that you wish to type is already present in your
+document then you can enter the first characters of the word you want
+to expand, then type M-/ and Emacs will search back through the
+document to identify potential expansions of the text you have
+written. Writing the name of the laboratory equipment mentioned
+previously can be achieved by typing a capital W, an e and i and then
+using the expansion command.
+
+This has been very useful, as it has highlighted a problem. Look
+towards the top of this file to locate the term Weissenberg
+Rheogoniometer, and you will find that the term is marked with quote
+marks. This breaks the normal use of dynamic abbreviation expansion
+because the definition of a word in Emacs would include the quote
+mark.
+
+Having typed the phrase without the quote marks now, the expansion
+will work as expected:
+
+Weissenberg Rheogoniometer
+
+As expected, the Wei expanded to the full word. To add the second
+word add a space and use M-/ again and the second word is added.
+
+So, in the event of this not working as expected, the issue is likely
+to be that the previous occurrence wasn't detected as matching your
+text. To confirm that this was the case, the dynamic expansion did
+work if I added the quote before the Wei.
+
+**** Automatic Expansion of Configured Phrases.
+
+The above method of dynamic expansion is great for those occasions
+when a term appears in a single file repeatedly, but which you are
+unlikely to be using regularly within all your writing. The next
+section provides a couple of functions that can be used to expand text
+which you define ahead of time. Firstly, the configuration for this
+behaviour.
+
+#+begin_src emacs-lisp
+  ;; Automatic expansion of configured abbreviations.
+  (setq-default abbrev-mode t)
+  (setq abbrev-file-name "~/.backups/.abbrev_defs")
+  (setq save-abbrevs 'silently)
+#+end_src
+
+The configuration sets the abbreviation mode as the default and then
+specifies the file which is used to store the abbreviations. The file
+contains the abbreviation and the expanded form as well as some record
+keeping regarding how often the expansions are used.
+
+The current expansions I have configured are:
+
+bw -> Best wishes
+hth -> Hope that helps
+lf -> Lizzie
+lif -> Lizzie Fieldsend
+mo -> Morag
+mof -> Morag Fieldsend
+mw -> MathWorks
+ri -> Richard
+rif -> Richard Fieldsend
+teh -> the
+wr -> Weissenberg Rheogoniometer
+
+The abbreviations I have configured reflect the use cases I
+favour. The bw and hth entries are from when I used Evolution as my
+email client and had it configured to use Emacs as the text editor. If
+you always sign off your emails with Best wishes then you can save
+yourself nine characters for every email!
+
+The name expansions for the family have differences. Lizzie's original
+abbreviation was li, which would have matched mine and been equivalent
+to Morag's, but li is the HTML tag for a list item, and having these
+expand whenever you typed them was clearly untenable.
+
+On this subject, it is worth highlighting that if you have a text
+which expands and which you don't want to have the expanded form for,
+then the expansion can be undone using the command M-x
+unexpand-abbrev.
+
+The other use-case which is particularly useful is to have Emacs
+automatically undo any repeated mis-spellings or typos that you might
+make on a regular basis. The example of teh being changed to the is
+the one from the list, but others can be added if required.
+
+The process of adding abbreviations is straightforward. Enter the text
+that you wish to have expanded, and then type whichever of the
+following commands is appropriate:
+
+C-x a i g - Add 'global' abbreviation available in all modes
+
+C-x a i l - Add 'local' abbreviation available in current mode
+
+Emacs will then ask you for the expanded form of the
+abbreviation. Note that the text completely replaces the text, so it
+doesn't have to start with, or contain the abbreviation text.
+
+The abbreviation file will be saved and updated when Emacs is closed
+using C-x C-c.

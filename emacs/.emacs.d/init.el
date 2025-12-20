@@ -35,9 +35,13 @@
 ;; of files in a single location, returning to the same place when
 ;; re-opening files.
 (org-babel-load-file (concat user-emacs-directory "fileman.org"))
-;; 
+;;
 ;; Universal - Functions and settings that are useful everywhere.
 (org-babel-load-file (concat user-emacs-directory "universal.org"))
+;;
+;; Writing - Functions to manage writing on human text, not
+;; programming.
+(org-babel-load-file (concat user-emacs-directory "writing.org"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; End of Org file inclusion commands.
