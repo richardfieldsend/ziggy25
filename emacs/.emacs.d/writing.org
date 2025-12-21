@@ -196,3 +196,18 @@ right. The width of the text section can be increased using C-c } and
 decreased using C-c {. Alternatively, the width of the text section
 can be set by using C-c \ and then entering the width as a numerical
 value.
+
+**** Low Distraction Mode 3 - Dark Room Mode.
+
+The configuration for Dark Room Mode:
+
+#+begin_src emacs-lisp
+  ;; Dark Room Mode
+  (use-package darkroom)
+#+end_src
+
+Dark Room Mode sits between the Write Room mode and Olivetti mode. It
+has the title bar and the transparent background of Olivetti mode, but
+hides the modeline bar like Write Room mode. The main difference it
+has with both the alternatives is that it uses a larger font which is
+easy on the eye, and fills the screen satisfyingly quickly!.
