@@ -42,6 +42,9 @@
 ;; Writing - Functions to manage writing on human text, not
 ;; programming.
 (org-babel-load-file (concat user-emacs-directory "writing.org"))
+;;
+;; Markup - Markup Language Edit Modes.
+(org-babel-load-file (concat user-emacs-directory "markup.org"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; End of Org file inclusion commands.

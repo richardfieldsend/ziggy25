@@ -1,0 +1,23 @@
+** Markup Language Editing Modes.
+
+When writing text in Emacs, you aren't given access to things like
+headers, fonts and justification types.  Emacs is just a place to
+write your text into a file.
+
+But there is always going to be a need to have the text you type into
+Emacs turned into an attractive document.  This can be achieved by
+using one of the available markup languages.  If you are writing for
+the World Wide Web, for instance, then you might choose to write your
+document using HTML and CSS. This is made more straightforward within
+Emacs by using the Emmet mode.  Alternatively, if you are printing a
+longer document which involves internal cross-referencing, insertion
+of citations, bibliographies and an index then LaTeX is a good choice
+to create the document in, and the Emacs mode AucTeX will help you
+achieve complex documents easily.  This document itself is largely
+written in a markup language. It uses a dialect of Markdown, and
+documents like it can be turned into attractive documents by using a
+suitable processing pipeline.  I haven't really investigated this
+approach because I like using LaTeX so much.
+
+So this configuration file will be targeted at adding the various
+configurations to make these markup languages work.
