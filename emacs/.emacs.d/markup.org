@@ -89,3 +89,63 @@ want to rely on, especially when, over in the LaTeX camp the tools for
 writing your documents include AucTeX for document creation and
 latexmk for being able to work with a simple, largely automated
 workflow.
+
+*** HTML and CSS Editing Using Emmet Mode.
+
+HTML wasn't the first markup language that I learned when using Linux,
+that was LaTeX when I was trying to deal with the lack of a good word
+processor, but HTML came along pretty soon after, and is probably the
+one that I have spent the most time using in a work environment. The
+tooling for writing HTML and CSS was very basic in the early days, but
+when the more formalised structures of XHTML and HTML5 came along the
+tooling for the document creation improved, aided by the improved
+structural rigour required by the documents. It is still possible to
+write your documents well, by hand, but when there is Emmet, why would
+you?
+
+Emmet helps building HTML documents quickly by inserting a structured
+set of tags and then expanding them into a structured set of tags that
+can then have the relevant text added to complete the page. The best
+example is getting started in a HTML file. Open a fresh, empty
+document with the html file extension, and then type html5 at the top
+of the file, and with the cursor immediately after the 5 hit
+'C-j'. The text is replaced with a simple, but valid HTML
+skeleton. Further sections are either added by hand, or by adding
+further tags and expanding those as required.
+
+There are a number of cheatsheets to help users work out the
+expandable tags for use with Emmet, but as you get used to it the
+process gets better, and soon you will be adding an unsorted list with
+seven list items, each of which is a link to another file...
+
+The github page for Emmet mode includes useful abbreviations:
+
+https://github.com/smihica/emmet-mode?tab=readme-ov-file
+
+#+begin_src emacs-lisp
+  ;; Emmet mode - activation and further configuration
+  (use-package emmet-mode)
+  (require 'emmet-mode)
+  (add-hook 'sgml-mode-hook 'emmet-mode)
+  (add-hook 'css-mode-hook 'emmet-mode)
+  (setq emmet-move-cursor-between-quotes t) ; place cursor between quotes
+#+end_src
+
+The above is very much the same as the Emmet configuration that I have
+used previously apart from using the sgml mode hook to activate Emmet
+mode, rather than HTML mode, and the last line which places the cursor
+between the first set of speech marks when a tag is expanded.
+
+To understand why this is a benefit, consider the tag expansion to
+insert a link to a stylesheet. To add the link navigate to either the
+line above or below the title tag and, on a line on its own insert:
+
+link
+
+With the cursor at the end of the word press C-j. Emmet will expand
+this to the following:
+
+<link href="" rel="stylesheet"/>
+
+With the function in place to move the cursor to the speechmarks, the
+file name for the stylesheet can be added without further ado.
