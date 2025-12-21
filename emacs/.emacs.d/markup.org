@@ -21,3 +21,71 @@ approach because I like using LaTeX so much.
 
 So this configuration file will be targeted at adding the various
 configurations to make these markup languages work.
+
+*** Groff/Troff Editing.
+
+A stalwart of the document creation software has been the roff
+programs.  Standing for 'run-off', these are tools for making
+relatively simple documents, though they do have a range of macros
+available that can be used to enhance the functionality.
+
+Originally there were two programs, troff and nroff. nroff is the
+processor that creates documents suitable for tty systems which assume
+a standard character width and limited enhanced formatting. troff
+defaults to writing out Postscript documents which are suitable for
+use with laser printers, but which are more likely to be used in
+modern systems to generate a PDF document (PDFs are, at their heart, a
+wrapper around a Postscript file).
+
+Emacs has an nroff mode which is activated when a file with the
+extension .ms is opened. There is an nroff-electric-mode which helps
+creating the document by generating the second half of a tag when they
+come in pairs. An example for this is the command to centre some
+text. Centring is started using .(c on its own at the start of a
+line. The following line is formatted as centred, and then the start
+of the line when the centring stop is .)c on its own. If
+nroff-electric is activated then C-j will carry out an electric
+return, inserting the closing tag. The nroff mode doesn't need to be
+activated, but the electric mode can be configured to be activated
+when the nroff mode hook is encountered.
+
+#+begin_src emacs-lisp
+  ;; activate nroff electric mode when nroff mode is activated.
+  (add-hook 'nroff-mode-hook 'nroff-electric-mode)
+#+end_src
+
+Testing shows that this works, and that opening an nroff file
+activates both nroff mode and the nroff electric mode.
+
+A couple of useful links for learning about Groff are:
+
+https://opensource.com/article/18/2/writing-academic-papers-groff-me
+
+This is especially useful, including instructions on creating a title
+page, and the Groff equivalent of smart quotation marks.
+
+https://douglasrumbaugh.com/post/groff-introduction/
+
+Less advanced, but still useful, especially regarding the processor
+pipeline for turning the Groff files into a PDF file.
+
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Nroff-Mode.html
+
+The very short page on nroff mode in Emacs.
+
+Finally, there are a couple of books that I have. One is in my Dropbox
+eBook folders and is called 'Unix Text Processing'. It covers
+nroff/troff as well as some very low level text editing tools (ed)! It
+is the sort of publication that considers using Awk a method of
+editing your documents... I also have a physical book which is the
+partner book of the above, covering the macros for things like
+inserting graphics and equations.
+
+In summary, the Groff system is a workable method of creating
+documents, and is somewhat lower weight than LaTeX, but the source
+files are somewhat more difficult to read, being sparse in the
+extreme. It is interesting to use, but it isn't something I would
+want to rely on, especially when, over in the LaTeX camp the tools for
+writing your documents include AucTeX for document creation and
+latexmk for being able to work with a simple, largely automated
+workflow.
