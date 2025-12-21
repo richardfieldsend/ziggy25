@@ -149,3 +149,90 @@ this to the following:
 
 With the function in place to move the cursor to the speechmarks, the
 file name for the stylesheet can be added without further ado.
+
+*** LaTeX Editing Using AucTeX Mode.
+
+Back when I first installed Linux in the late 1990s, I purchased a
+copy of a word processor because this was before you could do these
+sorts of things online using Google Docs or M365. Worth highlighting
+that I didn't have access even to dial-up internet at this
+point. Unfortunately the word processor was not a mature product, and
+without investing in paid for fonts, the fonts provided were pretty
+fugly (and that is before discovering that the application was pretty
+unstable)!
+
+As this was the case, I began to look for an alternative, and while
+reading the O'Reilly 'Learning Emacs' book I found out about LaTeX. I
+purchased a book about the LaTeX system, and began the long journey of
+learning how to write documents in the LaTeX markup language.
+
+LaTeX is a complex markup language, and crafting it by hand would be a
+major chore. Fortunately AucTeX makes it much simpler.
+
+#+begin_src emacs-lisp
+  ;; Install AucTeX to support LaTeX editing.
+  (use-package auctex
+    :defer t
+    :ensure t)
+  ;; Add RefTeX for Reference and Link Management
+  (require 'reftex)
+  (setq reftex-plug-into-AUCTeX t)
+  ;; Switch on auto-saving for LaTeX documents
+  (setq TeX-auto-save t)
+  ;; Switch on Electric mode for AucTeX
+  (setq TeX-electric-escape t)
+  ;; Make AucTeX parse documents for included documents and the like.
+  (setq TeX-parse-self t)
+  ;; Set the master document to nothing by default.
+  (setq-default TeX-master nil)
+  ;; Turn on RefTeX for both native LaTeX and latex modes.
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  (add-hook 'latex-mode-hook 'turn-on-reftex)
+  ;; Activate the Flyspell mode
+  (add-hook 'latex-mode-hook 'flyspell-mode)
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  ;; Math Mode On
+  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+  (add-hook 'latex-math-mode 'LaTeX-math-mode)
+  ;; Activate Outline Minor Mode
+  (add-hook 'LaTeX-mode-hook 'outline-minor-mode)
+  (add-hook 'latex-mode-hook 'outline-minor-mode)
+  ;; Folding enabled for macros and environments.
+  (add-hook 'latex-mode-hook (lambda ()
+  			     (TeX-fold-mode 1)))
+  (add-hook 'LaTeX-mode-hook (lambda ()
+  			     (TeX-fold-mode 1)))
+  ;; Set me as the default author.
+  (setq LaTeX-default-author '("Richard Fieldsend"))
+#+end_src
+
+When writing documents using LaTeX there are two ways of being able to
+see what your document will eventually look like. The simplest one is
+to save the file and then use 'C-c C-c'. This will process the LaTeX
+file and generate the viewable pages. It may be necessary to use the
+C-c C-c several times if the document is getting complex as it may
+need to call latex and bibtex and then latex again. After the required
+processes have been run then the option changes to 'View' and the
+output file will be opened and displayed.
+
+The second approach is to use the latexmk package which runs like a
+specialised version of make, processing the files using the relevant
+packages until a final product is created. The advantage of latexmk is
+that it can be used in a continuous mode which will update whenever
+the latex file is saved.
+
+latexmk -pvc -pdf <filename.tex>
+
+The only issue to be aware of is that you should try and save the
+LaTeX file when it is internally consistent and will compile without
+errors. If this isn't the case then the latexmk output will show that
+compilation has errored and it will need to be prodded back into life.
+
+Initially the pdf file was always opened in xdvi rather than evince,
+but this has been resolved by creating a .latexmkrc file in the root
+of my home folder as outlined on this page:
+
+https://mgeier.github.io/latexmk.html
+
+This fixes the issue, triggering the pdf to be opened in evince, which
+has the bonus that it updates whenever the pdf file is updated.
