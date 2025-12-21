@@ -211,3 +211,30 @@ has the title bar and the transparent background of Olivetti mode, but
 hides the modeline bar like Write Room mode. The main difference it
 has with both the alternatives is that it uses a larger font which is
 easy on the eye, and fills the screen satisfyingly quickly!.
+
+*** Focus Mode - More Low Distraction Editing.
+
+When faced with a wall of text, it can become a challenge to focus on
+what it is that you are trying to write. The Focus Mode configuration
+dims any text outside the current working block of text, with the
+current block of text being defined depending on the mode that the
+text is in. In text and LaTeX the focus is paragraph.
+
+#+begin_src emacs-lisp
+  ;; Focus Mode
+  (use-package focus
+    :config (add-to-list 'focus-mode-to-thing '(text-mode . paragraph))
+    :config (add-to-list 'focus-mode-to-thing '(latex-mode . paragraph))
+    :config (add-to-list 'focus-mode-to-thing '(LaTeX-mode . paragraph))
+    :config (add-to-list 'focus-mode-to-thing '(org-mode . org-element))
+    :config (add-to-list 'focus-mode-to-thing '(prog-mode . function-body))
+    (add-hook 'text-mode-hook 'focus-mode)
+    (add-hook 'latex-mode-hook 'focus-mode)
+    (add-hook 'LaTeX-mode-hook 'focus-mode)
+    (add-hook 'org-mode-hook 'focus-mode)
+    (add-hook 'prog-mode-hook 'focus-mode))
+#+end_src
+
+This appears to work as I would want it to, at least, in Org
+Mode. Testing in LaTeX and programming modes will have to happen
+later.
