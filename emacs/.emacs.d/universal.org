@@ -262,3 +262,12 @@ function changes the response to y/n for ease of typing.
   ;; Use y/n rather than yes/no
   (fset 'yes-or-no-p 'y-or-n-p)
 #+end_src
+
+*** Make the Default Emacs Mode 'Text' Mode.
+
+This stanza sets the default mode in Emacs to text mode.
+
+#+begin_src emacs-lisp
+  ;; Set the default major mode to 'text'.
+  (setq-default major-mode 'text-mode)
+#+end_src
