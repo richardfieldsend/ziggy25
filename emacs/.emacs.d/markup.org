@@ -249,3 +249,45 @@ computer.
 This will initially be a placeholder and I'll come back to this when I
 have read through some of the finer points of BibTeX such as the
 dialect to use, and the differences between them.
+
+*** Org Mode Code Entangling - Indentation of Code.
+
+The configuration I am creating for my Emacs setup uses the Emacs
+Org-Mode markdown which is a dialect of Markdown, but with a very
+special capability.  This is usually referred to as code tangling.
+The Org files can have code segments embedded in the body of the
+document.  In the case of the Emacs configuration, these embedded code
+segments use Emacs Lisp in code wrapped in a begin source and end
+source tag.  It is possible, however, to use Org Mode to embed these
+sections and use a number of different languages, including Python, C
+and R.  It becomes possible, therefore, to use Org Mode in a similar
+way to Jupyter in Emacs, creating documents with usable code segments
+embedded in them.  I don't use this outside of configuring Emacs, but
+it may be something to look into in the future.
+
+The concept provides support for the paradigm 'Literate Programming'
+described by Donald Knuth, famed, also, as being the creator of
+LaTeX. The concept sees you writing your document as prose which
+describes what the program does, and any appropriate information about
+things like the algorithm used, and then, at the appropriate place,
+the code itself can be embedded in the prose. It can then be executed
+by placing a cursor in the code segment and calling for the code to
+run.  I think of this as being the logical extension of the concept of
+the program comment, with the balance between the comments and the
+code being flipped around.
+
+This section addresses an issue that has arisen in the past with the
+code sections. The indentation of the code within the code section can
+be problematic in the case of languages where indentation is part of
+the program language structure (most obviously Python). The code
+stanza ensures that the variable that manages the functionality of the
+tab key is set to true.
+
+#+begin_src emacs-lisp
+  ;; Indent the content of code blocks appropriately
+  (setq org-src-tab-acts-natively t)
+#+end_src
+
+As noted in a previous iteration of the Emacs configuration, checking
+the value of this variable, it is already to the t (true). I'll leave
+the code in place anyway.
