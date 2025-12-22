@@ -236,3 +236,16 @@ https://mgeier.github.io/latexmk.html
 
 This fixes the issue, triggering the pdf to be opened in evince, which
 has the bonus that it updates whenever the pdf file is updated.
+
+*** BibTeX and eBib - Bibliographic Support for LaTeX Documents.
+
+The reality is that I don't really need to have bibliographic
+functionality as part of my LaTeX system as I'm not writing anything
+like an academic paper, but I like the idea of using Emacs as a
+bibliographic database for storing the physical books I have on
+shelves throughout the house, and eBooks that I have on my Kindle or
+computer.
+
+This will initially be a placeholder and I'll come back to this when I
+have read through some of the finer points of BibTeX such as the
+dialect to use, and the differences between them.
