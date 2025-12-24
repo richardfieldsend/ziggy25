@@ -246,9 +246,33 @@ bibliographic database for storing the physical books I have on
 shelves throughout the house, and eBooks that I have on my Kindle or
 computer.
 
-This will initially be a placeholder and I'll come back to this when I
-have read through some of the finer points of BibTeX such as the
-dialect to use, and the differences between them.
+#+begin_src emacs-lisp
+    ;; Activate and configure eBib for BibLaTeX database management.
+    (use-package ebib
+      :ensure ebib
+      :config (global-set-key (kbd "C-c b") 'ebib)
+      :config (setq ebib-bibtex-dialect 'biblatex)
+      :config (setq ebib-file-bib-search-dirs '("~/bibliographies/"))
+      :config (setq ebib-notes-directory '"~/bibliography-notes/")
+      :config (setq ebib-default-entry-type "Book")
+      :config (setq ebib-preload-bib-files
+    		'("~/bibliographies/humble.bib" "~/bibliographies/kindle.bib"  "~/bibliographies/paperbacks.bib" "~/bibliographies/hardbacks.bib" "~/bibliographies/audiobooks.bib"))
+      :config (setq ebib-keywords-field-keep-sorted t)
+      :config (setq ebib-keywords "~/bibliographies/keywordslist.txt")
+      :config (setq ebib-keywords-save-on-exit 'always)
+      :config (setq ebib-reading-list-file "~/bibliographies/ToBeRead.org")
+      :config (setq ebib-use-timestamp t)
+      :config (setq ebib-autogenerate-keys t))
+#+end_src
+
+Using C-c b to start ebib. The format now uses BibLaTeX, which
+according to the documents is a more modern implementation of BibTeX.
+
+More notes should be added in time on the process of adding entries,
+as well as time spent actually adding entries.
+
+Then a method for printing out the entries in the bib files needs to
+be set up, ideally to print on postcards sized sheets.
 
 *** Org Mode Code Entangling - Indentation of Code.
 
