@@ -315,3 +315,20 @@ tab key is set to true.
 As noted in a previous iteration of the Emacs configuration, checking
 the value of this variable, it is already to the t (true). I'll leave
 the code in place anyway.
+
+*** Remember - Emacs Note Taking Facility.
+
+Remember mode is a quick and easy way of creating notes that can be
+revisited and processed later.
+
+It may be superseded by the multi-node Roam system where nodes can be
+interconnected.
+
+#+begin_src emacs-lisp
+  ;; Configure the remember mode  and related keystrokes
+  (require 'remember)
+  (setq remember-data-directory "~/remember/")
+  (setq remember-data-file "~/remember/notes.org")
+  (define-key global-map (kbd "<f9> r") 'remember)
+  (define-key global-map (kbd "<f9> R") 'remember-region)
+#+end_src
