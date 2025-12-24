@@ -271,3 +271,40 @@ This stanza sets the default mode in Emacs to text mode.
   ;; Set the default major mode to 'text'.
   (setq-default major-mode 'text-mode)
 #+end_src
+
+*** Enable and Configure SSH Tramp Mode.
+
+A groovy part of Emacs is to be able to edit text in files on a remote
+Unix machine.  The benefit of being able to use your own Emacs
+configuration while working on a machine elsewhere is maximum geek!
+
+#+begin_src emacs-lisp
+  ;; Use Tramp with SSH.
+  (setq tramp-default-method "ssh")
+#+end_src
+
+The following page provides guidance on using Tramp:
+
+https://www.gnu.org/software/emacs/manual/html_node/tramp/File-name-syntax.html
+
+To open a remote file use:
+
+C-x C-f
+
+and enter the path:
+
+/ssh:rfieldse@pi5-64:/home/rfieldse/
+
+This will open Dired in the home folder, so you can navigate the
+folders to locate the files you want to edit.
+
+This page provides guidance on being able to edit files as sudo. The
+heading 'Combining ssh or plink with su, sudo, doas or run0'.
+
+The path used would be:
+
+/ssh:rfieldse@pi5-64|sudo::/home/rfieldse/
+
+This connects to my Pi5, and it looks like the main user on the Pi
+doesn't require password entry for using sudo, but testing confirms
+that it does work.
