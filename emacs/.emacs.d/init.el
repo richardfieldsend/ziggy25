@@ -45,6 +45,9 @@
 ;;
 ;; Markup - Markup Language Edit Modes.
 (org-babel-load-file (concat user-emacs-directory "markup.org"))
+;;
+;; Programming - Programming Supporting Modes
+(org-babel-load-file (concat user-emacs-directory "programming.org"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; End of Org file inclusion commands.

@@ -1,0 +1,53 @@
+** Programming Support Modes.
+
+I hope it is obvious that one of the major activities for which
+computers are used is programming. Emacs is eminently suited for these
+activities, especially when the appropriate plug-ins and support
+packages are added in.
+
+From managing the compilation process of C/C++ programs using
+Makefiles, to having Clojure/Lisp supporting Paredit functions which
+allow items to be slurped into or barfed out of brackets, there are
+lots of tools to make the process easier and less error prone.
+
+*** Makefile Mode.
+
+When programming in C/C++, the compilation process is managed using a
+makefile stored in the same folder as the source files. The file is
+named 'Makefile' by convention. The structure for the command for a
+single source file to be compiled is something like:
+
+name:
+     compilation command
+
+The compilation command will be of the form:
+
+gcc -Wall source_name.c -o binary_name
+
+the -Wall flag will run the appropriate warnings for any issues with
+the code or in the compilation process.
+
+The equivalent for compiling a C++ code base would be:
+
+g++ -Wall source_name.cpp -o binary
+
+In each case, calling the compilation process within Emacs is a matter
+of using:
+
+M-x compile
+
+This will ask for the command:
+
+make -k
+
+add the name part of the Makefile entry to the end of the command and
+the compilation command will be run.
+
+The compilation process output is displayed in a second
+buffer. The compiled binary can be run using 'eshell' (a bash style
+shell running within an Emacs buffer) or from a terminal.
+
+Recompilation reflecting changes in the source code can be done by
+using the -B switch. To do this, add the flag before the -Wall flag:
+
+gcc -B -Wall sourcefile.c -o binaryfile
