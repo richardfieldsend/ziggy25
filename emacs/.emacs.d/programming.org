@@ -51,3 +51,44 @@ Recompilation reflecting changes in the source code can be done by
 using the -B switch. To do this, add the flag before the -Wall flag:
 
 gcc -B -Wall sourcefile.c -o binaryfile
+
+*** Lisp and Clojure Programming.
+
+Lisp programming is inherent to the Emacs system because most of the
+macros that are used are written in the language (though the core
+engine is written in C).
+
+**** Paredit Mode for Lisp Programming.
+
+Lisp structure is very dependent on the use of brackets (primarily the
+parenthesis type). There are already functions in place to help with
+the use of parentheses in the writing of text, such as the closing
+half of the pair being added automatically, highlighting of the
+matching halves of a pair when the cursor is on the opening character,
+or immediately after the closing one and the rainbow colouring of the
+brackets to help with understanding and checking the balance of these
+pairs.
+
+Paredit is another set of functions which help support the use of
+brackets within coding.
+
+#+begin_src emacs-lisp
+  ;; Load Paredit for Lisp files.
+  (use-package paredit)
+  (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+  (add-hook 'ielm-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+  (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+#+end_src
+
+Parameters can be pulled into brackt pairs using 'slurp' and ejected
+using 'barf'. There are other functions provided by the paredit
+function. Examples of these behaviours are described on this page:
+
+https://sansarip.github.io/owlbear/paredit.html
+
+The functions provided are bracket aware, so can be used to copy or
+move parenthesis demarcated units around the file.
