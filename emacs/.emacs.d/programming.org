@@ -84,7 +84,7 @@ brackets within coding.
   (add-hook 'clojure-mode-hook #'enable-paredit-mode)
 #+end_src
 
-Parameters can be pulled into brackt pairs using 'slurp' and ejected
+Parameters can be pulled into bracket pairs using 'slurp' and ejected
 using 'barf'. There are other functions provided by the paredit
 function. Examples of these behaviours are described on this page:
 
@@ -92,3 +92,15 @@ https://sansarip.github.io/owlbear/paredit.html
 
 The functions provided are bracket aware, so can be used to copy or
 move parenthesis demarcated units around the file.
+
+*** Eldoc - Display Elisp information in the mini-buffer.
+
+When coding, it can be useful to have relevant information displayed
+in the mini-buffer at the foot of the screen.
+
+#+begin_src emacs-lisp
+  ;; ElDoc information displayed in the mini-buffer.
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+#+end_src
