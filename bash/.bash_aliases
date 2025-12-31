@@ -1,7 +1,7 @@
 # aliases I've created.
 
 # load Ristretto full screen (ristretto is my default choice of image viewer)
-alias ristrettof='ristretto -f '
+#alias ristrettof='ristretto -f '
 
 # load mplayer full screen (mplayer is my video player of choice)
 alias mplayerf='mplayer -fs -cache 8192'
@@ -48,3 +48,11 @@ alias stowemold='rm -rfv ~/.emacs.d/ && stow -v -R -d ~/.dotfiles emacs2024'
 
 # alias for unpacking MetArt images
 alias metu='metExtract.sh && for a in */ ; do ristrettof "$a"*{1,5}.jpg ; done && ll -h -d * && ll -d * | wc -l'
+
+function rof {
+    ristretto -f "$1"/*1.jpg
+}
+
+function fof {
+    feh -D 2 --on-last-slide quit -F "$1"/*1.jpg
+}
