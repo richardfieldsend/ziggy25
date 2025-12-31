@@ -104,3 +104,23 @@ in the mini-buffer at the foot of the screen.
   (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
   (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 #+end_src
+
+*** Clojure Programming Support.
+
+Clojure is a modern Lisp dialect where the programs can be compiled
+into Java files which can then be used with Java Virtual Machines. The
+following stanza is a partial implementation of the Emacs
+configuration suggested in the Clojure book 'Clojure for the Brave and
+the True'.
+
+#+begin_src emacs-lisp
+  ;; Clojure Programming Support
+  (use-package clojure-mode)
+  (use-package clojure-mode-extra-font-locking)
+  (use-package cider)
+  (use-package clj-refactor)
+#+end_src
+
+The cider package provides a REPL function for working with Clojure in
+Emacs. To use this function open the appropriate Clojure program and
+then run M-x
